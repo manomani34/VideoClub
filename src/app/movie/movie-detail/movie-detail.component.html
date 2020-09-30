@@ -1,0 +1,58 @@
+<div class="row" *ngIf="detailCheck else DetailEmpty">
+    <div class="panel panel-info" style="height: 40px; background-color:rgb(203, 255, 246);"  >
+        <div class="panel-body">
+         <div class="col-sm-9" >
+             {{itemData.name}}
+         </div>
+         <div class="col-sm-3" style="direction: rtl;">
+             {{itemData.date}}
+           </div>
+        </div>
+     </div>
+
+        <div class="panel-body" style="direction: rtl;">
+            <div class="row text-center" style="padding-bottom: 20px;">
+                    <img src="{{itemData.imgUrl}} " class="img-thumbnail img-responsive" style="max-height: 200px;"  alt="">                    
+            </div>
+
+            <div>
+                <p><button class="btn btn-info" (click)="btnAddToBasket()">افزودن به سبد خرید ({{itemData.price}} تومان) =>
+                    <span style="color: yellow">تعداد {{itemData.numberExist}} عدد</span>
+                   
+                </button>
+                <span style="color: red;font-weight: bold;">{{errorMSG}}</span>
+                <span style="color: green;font-weight: bold;">{{trueMSG}}</span>
+                
+                </p>
+                <p>مدت زمان فیلم: <span>{{itemData.movieTime}}</span></p>
+                <p>کشور سازنده: <span>{{itemData.productCountry}}</span></p>
+                <p>کارگردان: <span>{{itemData.Director}}</span></p>
+                <p>موضوع: <span>{{itemData.subject}}</span></p>
+                <p style=" text-align: justify;">
+                   خلاصه داستان :  <span>{{itemData.description}}</span>
+                </p>
+                <p>امتیاز : <span><input type="number" min="0" max="5"   #txtStar> <button class="btn btn-sm btn-default" (click)="AddStar()">ثبت</button></span></p>
+                <p><app-movie-detail-comment [MovieId]="itemData.id" ></app-movie-detail-comment></p>
+                <p style="padding-top: 20px;padding-bottom: 40px;"> <span style="font-weight: bold; ">نظرات کاربران : </span>
+                <app-movie-detail-comment-item *ngFor="let r of itemData.comment" [commentItem]="r"></app-movie-detail-comment-item>
+            </p>
+            </div>
+              
+        </div>
+      
+</div>
+
+<ng-template #DetailEmpty>
+        <h3>Plz Select Movie Item</h3>
+    </ng-template>
+
+
+
+
+
+
+
+
+
+
+

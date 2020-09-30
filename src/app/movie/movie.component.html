@@ -1,0 +1,34 @@
+
+<div class="panel panel-default col-sm-10 col-sm-offset-1" style="background-color: rgb(231, 227, 227);">
+    <div class="panel-body">
+        <p>search form:</p>
+        <form>
+            <div class="form-group">
+                <label for="name">Film Name:</label>
+                <input type="text" class="form-control" id="name" #txtname>
+    
+              </div>
+              <div class="form-group">
+                  <label for="Subject">Film Subject:</label>
+                  <input type="text" class="form-control" id="Subject" #txtSubject>
+                </div>
+                <div class="form-group">
+                  <label for="date">date :</label>
+                  <input type="number" class="form-control" id="date" #txtDate>
+                </div>
+
+{{itemMovies.name}}
+                <button type="submit" class="btn btn-default" (click)="btnSearch()">Search</button>
+              </form>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <app-movie-item *ngFor="let i of itemMovies" [movieItem]="i"></app-movie-item>
+  </div>
+  <div class="col-sm-6">
+      <app-movie-detail  ></app-movie-detail>
+  </div>
+
+</div>
